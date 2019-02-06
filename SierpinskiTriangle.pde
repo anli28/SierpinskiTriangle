@@ -1,14 +1,23 @@
 int u = 0;
 int p = 0;
+private boolean keyW = false;
+private boolean keyS = false;
 
 
 public void setup()
 {
 	size(1000,1000);
+	frameRate(200);
 
 }
 public void draw()
 {	
+	if(keyW == true){
+		u = u + 20;
+	}
+	if(keyS == true){
+		u = u - 20;
+	}
 	background(255);
 	sierpinski(0+u,0,1000);
 	sierpinski2(0-u,1000,1000);
@@ -16,10 +25,25 @@ public void draw()
 	sierpinski4(1000,1000-u,1000);
 
 }
-public void mouseWheel(MouseEvent event)//optional
-{
-	int e = event.getCount() * 10;
-	u = u + e;
+public void keyPressed() {
+	if(key == 'w'){
+		keyW = true;
+	}
+	if(key == 's'){
+		keyS = true;
+	}
+}
+
+
+public void keyReleased() {
+	if(key == 'w'){
+		keyW = false;
+	}
+	if(key == 's'){
+		keyS = false;
+	}
+
+
 }
 public void sierpinski(int x, int y, int len) 
 {
